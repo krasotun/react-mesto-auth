@@ -1,0 +1,15 @@
+.form-edit__title {
+  margin: 0;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #000000;
+}
+
+@media screen and (max-width: 528px) {
+  .form-edit__title {
+    font-size: 18px;
+    text-align: center;
+  }
+}

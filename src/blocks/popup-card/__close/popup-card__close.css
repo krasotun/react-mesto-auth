@@ -1,0 +1,21 @@
+.popup-card__close {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
+}
+
+.popup-card__close:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 528px) {
+  .popup-card__close {
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0px;
+  }
+}

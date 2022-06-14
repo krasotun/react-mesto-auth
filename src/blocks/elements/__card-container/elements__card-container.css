@@ -1,0 +1,9 @@
+.elements__card-container {
+  width: 282px;
+  height: 361px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #FFFFFF;
+  position: relative;
+
+}

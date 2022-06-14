@@ -1,0 +1,7 @@
+.elements {
+  padding-top: 51px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 17px;
+  justify-content: space-around;
+}

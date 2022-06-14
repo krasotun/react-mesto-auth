@@ -1,0 +1,10 @@
+.profile__text-container {
+  margin-left: 30px;
+}
+
+
+@media screen and (max-width: 1050px) {
+  .profile__text-container {
+    margin: 26px 0 0 0;
+  }
+}

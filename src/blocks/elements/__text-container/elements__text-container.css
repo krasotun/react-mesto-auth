@@ -1,0 +1,6 @@
+.elements__text-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding: 0 20px;
+}

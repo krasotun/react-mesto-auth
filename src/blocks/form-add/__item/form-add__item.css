@@ -1,0 +1,27 @@
+.form-add__item {
+  width: 358px;
+  min-height: 27px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.form-add__item:nth-child(2) {
+  margin-top: 30px;
+}
+
+.form-add__item::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21;
+}
+
+@media screen and (max-width: 528px) {
+  .form-add__item {
+    width: 238px;
+  }
+}

@@ -1,0 +1,25 @@
+.form-edit__submit-button {
+  width: 358px;
+  height: 50px;
+  background: #000000;
+  border-radius: 2px;
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: 48px;
+}
+
+.form-edit__submit-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 528px) {
+  .form-edit__submit-button {
+    margin-top: 45px;
+    width: 238px;
+  }
+}
