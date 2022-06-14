@@ -9,6 +9,7 @@ import Header from "./Header";
 import ImagePopup from "./ImagePopup";
 import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
+import Sign from "./Sign";
 
 function App() {
 	function handleEditAvatarClick() {
@@ -117,6 +118,9 @@ function App() {
 		<div className="page__content">
 			<CurrentUserContext.Provider value={currentUser}>
 				<Header />
+				<Sign
+
+				/>
 				<Main
 					cards={cards}
 					onCardClick={handleCardClick}
