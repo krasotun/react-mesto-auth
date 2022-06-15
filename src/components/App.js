@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/api";
 import AddPlacePopup from "./AddPlacePopup";
@@ -7,9 +8,10 @@ import EditProfilePopup from "./EditProfilePopup";
 import Footer from "./Footer";
 import Header from "./Header";
 import ImagePopup from "./ImagePopup";
+import Login from "./Login";
 import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
-import Sign from "./Sign";
+import Register from "./Register";
 
 function App() {
 	function handleEditAvatarClick() {
@@ -118,18 +120,25 @@ function App() {
 		<div className="page__content">
 			<CurrentUserContext.Provider value={currentUser}>
 				<Header />
-				<Sign
-
-				/>
-				<Main
-					cards={cards}
-					onCardClick={handleCardClick}
-					onCardLike={handleCardLike}
-					onCardDelete={handleCardDelete}
-					onEditAvatar={handleEditAvatarClick}
-					onEditProfile={handleEditProfileClick}
-					onAddPlace={handleAddPlaceClick}
-				/>
+				<Switch>
+					<Route exact path="/sign-up">
+						<Register />
+					</Route>
+					<Route exact path="/sign-in">
+						<Login />
+					</Route>
+					<Route exact path="/">
+						<Main
+							cards={cards}
+							onCardClick={handleCardClick}
+							onCardLike={handleCardLike}
+							onCardDelete={handleCardDelete}
+							onEditAvatar={handleEditAvatarClick}
+							onEditProfile={handleEditProfileClick}
+							onAddPlace={handleAddPlaceClick}
+						/>
+					</Route>
+				</Switch>
 				<Footer />
 				<EditProfilePopup
 					isOpen={isEditProfilePopupOpen}

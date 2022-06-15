@@ -1,0 +1,10 @@
+.form__submit-button_dark {
+  background: #ffffff;
+  color: #000000;
+  margin-top: 216px;
+  margin-bottom: 0;
+}
+
+.form__save-button_theme_dark:hover {
+  opacity: 0.85;
+}

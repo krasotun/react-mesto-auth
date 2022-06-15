@@ -81,11 +81,16 @@
 @import "./blocks/form-add/__submit-button/form-add__submit-button.css";
 
 @import "./blocks/form/form.css";
+@import "./blocks/form/__title/form__title.css";
+@import "./blocks/form/__title/form__title_dark.css";
+@import "./blocks/form/form_dark.css";
 @import "./blocks/form/__item/form__item.css";
+@import "./blocks/form/__item/form__item_dark.css";
 @import "./blocks/form/__item/form__item_type_error.css";
 @import "./blocks/form/__error/form__error.css";
 @import "./blocks/form/__error/form__error_visible.css";
 @import "./blocks/form/__submit-button/form__submit-button.css";
+@import "./blocks/form/__submit-button/form__submit-button_dark.css";
 @import "./blocks/form/__submit-button/form__submit-button_inactive.css";
 
 @import "./blocks/form-edit-avatar/form-edit-avatar.css";

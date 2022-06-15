@@ -1,0 +1,11 @@
+.form__item_dark {
+  border-bottom: 2px solid #cccccc;
+  background-color: transparent;
+  color: #ffffff;
+}
+.form__item_dark::placeholder {
+  color: #cccccc;
+}
+.form__item_dark:focus {
+  border-bottom: 2px solid transparent;
+}
