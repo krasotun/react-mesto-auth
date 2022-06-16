@@ -1,4 +1,7 @@
 .header {
-  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   min-height: 119px;
 }

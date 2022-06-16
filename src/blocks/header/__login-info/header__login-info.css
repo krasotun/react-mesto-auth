@@ -1,0 +1,11 @@
+.header__login-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}

@@ -15,8 +15,10 @@ function Register() {
 				<span className="form__error" id="password-error"></span>
 			</Sign>
 
-			<p className="registration__text">Уже зарегистрированы?</p>
-			<Link to="/sign-in" className="registation__link">Войти</Link>
+			<div className="registration">
+				<p className="registration__text">Уже зарегистрированы?</p>
+				<Link to="/sign-in" className="registation__link">Войти</Link>
+			</div>
 		</>
 	)
 }

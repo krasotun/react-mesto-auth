@@ -6,6 +6,7 @@
 @import "./blocks/button/button.css";
 
 @import "./blocks/header/header.css";
+@import "./blocks/header/__login-info/header__login-info.css";
 @import "./blocks/header/__logo/header__logo.css";
 
 @import "./blocks/profile/profile.css";
@@ -97,3 +98,7 @@
 @import "./blocks/form-edit-avatar/__title/form-edit-avatar__title.css";
 @import "./blocks/form-edit-avatar/__input-container/form-edit-avatar__input-container.css";
 @import "./blocks/form-edit-avatar/__submit-button/form-edit-avatar__submit-button.css";
+
+@import "./blocks/registration/registration.css";
+@import "./blocks/registration/__text/registration__text.css";
+@import "./blocks/registration/__link/registration__link.css";

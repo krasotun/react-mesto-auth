@@ -94,7 +94,8 @@ function App() {
 	const [selectedCard, setSelectedCard] = React.useState(false);
 	const [currentUser, setCurrentUser] = React.useState({ name: "", description: "", avatar: '' });
 	const [cards, setCards] = React.useState([]);
-
+	const [isLoggedIn, setIsloggedIn] = React.useState(true);
+	const userEmail = 'marat@krasotun.ru';
 
 	React.useEffect(() => {
 		api.getUserInfo()
@@ -119,7 +120,10 @@ function App() {
 
 		<div className="page__content">
 			<CurrentUserContext.Provider value={currentUser}>
-				<Header />
+				<Header
+					isLoggedIn={isLoggedIn}
+					userEmail={userEmail}
+				/>
 				<Switch>
 					<Route exact path="/sign-up">
 						<Register />
