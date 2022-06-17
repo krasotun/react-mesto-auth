@@ -64,6 +64,11 @@
 @import "./blocks/popup-confirm/popup-confirm.css";
 @import "./blocks/popup-confirm/__container/popup-confirm__container.css";
 
+@import "./blocks/popup-tooltip/popup-tooltip.css";
+@import "./blocks/popup-tooltip/__container/popup-tooltip__container.css";
+@import "./blocks/popup-tooltip/__text/popup-tooltip__text.css";
+@import "./blocks/popup-tooltip/__image/popup-tooltip__image.css";
+
 @import "./blocks/form-edit/form-edit.css";
 @import "./blocks/form-edit/__title/form-edit__title.css";
 @import "./blocks/form-edit/__input-container/form-edit__input-container.css";

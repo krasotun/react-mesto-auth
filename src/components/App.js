@@ -8,6 +8,7 @@ import EditProfilePopup from "./EditProfilePopup";
 import Footer from "./Footer";
 import Header from "./Header";
 import ImagePopup from "./ImagePopup";
+import InfoTooltip from "./InfoTooltip";
 import Login from "./Login";
 import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
@@ -85,16 +86,18 @@ function App() {
 		setEditAvatarPopupState(false)
 		setEditProfilePopupState(false)
 		setAddPlacePopupState(false)
+		setInfoTooltipPopupState(false)
 		setSelectedCard({ name: '', link: '' })
 	}
 
 	const [isEditProfilePopupOpen, setEditProfilePopupState] = React.useState(false);
 	const [isAddPlacePopupOpen, setAddPlacePopupState] = React.useState(false);
 	const [isEditAvatarPopupOpen, setEditAvatarPopupState] = React.useState(false);
+	const [isInfoTooltipPopupOpen, setInfoTooltipPopupState] = React.useState(false);
 	const [selectedCard, setSelectedCard] = React.useState(false);
 	const [currentUser, setCurrentUser] = React.useState({ name: "", description: "", avatar: '' });
 	const [cards, setCards] = React.useState([]);
-	const [isLoggedIn, setIsloggedIn] = React.useState(true);
+	const [isLoggedIn, setIsloggedIn] = React.useState(false);
 	const userEmail = 'marat@krasotun.ru';
 
 	React.useEffect(() => {
@@ -172,6 +175,11 @@ function App() {
 				<ImagePopup
 					card={selectedCard}
 					onClose={closeAllPopups}
+				/>
+				<InfoTooltip
+					isOpen={isInfoTooltipPopupOpen}
+					onClose={closeAllPopups}
+					isLoggedIn={isLoggedIn}
 				/>
 			</CurrentUserContext.Provider>
 		</div>
