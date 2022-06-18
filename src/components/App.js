@@ -83,6 +83,8 @@ function App() {
 				console.log(r);
 			})
 	}
+
+
 	function handleRegistation(password, email) {
 		auth.registration(password, email)
 			.then(() => {
@@ -95,6 +97,21 @@ function App() {
 				console.log(r);
 			})
 	}
+	function handleLogin(password, email) {
+		auth.authorization(password, email)
+			.then((r) => {
+				setIsloggedIn(true);
+				console.log(r.token);
+				localStorage.setItem('jwt', r.token)
+			})
+			.catch((r) => {
+				console.log(r);
+			})
+	}
+
+
+
+
 	function closeAllPopups() {
 		setEditAvatarPopupState(false)
 		setEditProfilePopupState(false)
@@ -112,7 +129,7 @@ function App() {
 	const [cards, setCards] = React.useState([]);
 	const [isLoggedIn, setIsloggedIn] = React.useState(false);
 	const [isLoginSuccess, setIsLoginSuccess] = React.useState(false);
-	const userEmail = 'marat@krasotun.ru';
+	const userEmail = 'krasotun@krasotun.ru';
 
 	React.useEffect(() => {
 		api.getUserInfo()
@@ -148,7 +165,8 @@ function App() {
 						/>
 					</Route>
 					<Route exact path="/sign-in">
-						<Login />
+						<Login
+							onLogin={handleLogin} />
 					</Route>
 					<Route exact path="/">
 						<Main
