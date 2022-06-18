@@ -111,6 +111,11 @@ function App() {
 			})
 	}
 
+	function onSignOut() {
+		setIsloggedIn(false);
+		history.push("/sign-in");
+	}
+
 	function closeAllPopups() {
 		setEditAvatarPopupState(false)
 		setEditProfilePopupState(false)
@@ -157,6 +162,7 @@ function App() {
 				<Header
 					isLoggedIn={isLoggedIn}
 					userEmail={userEmail}
+					onSignOut={onSignOut}
 				/>
 				<Switch>
 					<Route exact path="/sign-up">
