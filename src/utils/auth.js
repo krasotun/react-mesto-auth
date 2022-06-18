@@ -10,24 +10,24 @@ class Auth {
 			return Promise.reject(`Ошибка: ${res.status}`);
 		}
 	}
-	registration({ password, email }) {
+	registration(password, email) {
 		return fetch(`${this._baseUrl}/signup`, {
 			method: "POST",
 			headers: this._headers,
 			body: JSON.stringify({
-				password,
-				email
-			}).then
+				password: password,
+				email: email
+			})
 		}).then(this._checkServerStatus)
 	}
-	authorization({ password, email }) {
+	authorization(password, email) {
 		return fetch(`${this._baseUrl}/signin`, {
 			method: "POST",
 			headers: this._headers,
 			body: JSON.stringify({
 				password,
 				email
-			}).then
+			})
 		}).then(this._checkServerStatus)
 	}
 
@@ -41,12 +41,12 @@ class Auth {
 	}
 }
 
-const auth = new Auth({
+export const auth = new Auth({
 	baseUrl: 'https://auth.nomoreparties.co',
 	headers: {
 		"Content-Type": "application/json"
 	}
 })
 
-export default auth;
+
 

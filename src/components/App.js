@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/api";
+import { auth } from "../utils/auth";
 import AddPlacePopup from "./AddPlacePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
@@ -48,6 +49,7 @@ function App() {
 			})
 	}
 
+
 	function handleUpdateAvatar(link) {
 		api.updateAvatar(link)
 			.then((data) => {
@@ -81,7 +83,18 @@ function App() {
 				console.log(r);
 			})
 	}
-
+	function handleRegistation(password, email) {
+		auth.registration(password, email)
+			.then(() => {
+				setIsLoginSuccess(true);
+				setInfoTooltipPopupState(true);
+			})
+			.catch((r) => {
+				setIsLoginSuccess(false);
+				setInfoTooltipPopupState(true);
+				console.log(r);
+			})
+	}
 	function closeAllPopups() {
 		setEditAvatarPopupState(false)
 		setEditProfilePopupState(false)
@@ -98,6 +111,7 @@ function App() {
 	const [currentUser, setCurrentUser] = React.useState({ name: "", description: "", avatar: '' });
 	const [cards, setCards] = React.useState([]);
 	const [isLoggedIn, setIsloggedIn] = React.useState(false);
+	const [isLoginSuccess, setIsLoginSuccess] = React.useState(false);
 	const userEmail = 'marat@krasotun.ru';
 
 	React.useEffect(() => {
@@ -129,7 +143,9 @@ function App() {
 				/>
 				<Switch>
 					<Route exact path="/sign-up">
-						<Register />
+						<Register
+							onRegistration={handleRegistation}
+						/>
 					</Route>
 					<Route exact path="/sign-in">
 						<Login />
@@ -171,7 +187,6 @@ function App() {
 						</button>
 					}
 				/>
-
 				<ImagePopup
 					card={selectedCard}
 					onClose={closeAllPopups}
@@ -180,10 +195,10 @@ function App() {
 					isOpen={isInfoTooltipPopupOpen}
 					onClose={closeAllPopups}
 					isLoggedIn={isLoggedIn}
+					isLoginSuccess={isLoginSuccess}
 				/>
 			</CurrentUserContext.Provider>
 		</div>
-
 	);
 }
 
