@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/api";
 import { auth } from "../utils/auth";
@@ -13,6 +13,7 @@ import InfoTooltip from "./InfoTooltip";
 import Login from "./Login";
 import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
+import ProtectedRoute from "./ProtectedRoute ";
 import Register from "./Register";
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
 			.then(() => {
 				setIsLoginSuccess(true);
 				setInfoTooltipPopupState(true);
+				history.push('/sign-in')
 			})
 			.catch((r) => {
 				setIsLoginSuccess(false);
@@ -101,16 +103,13 @@ function App() {
 		auth.authorization(password, email)
 			.then((r) => {
 				setIsloggedIn(true);
-				console.log(r.token);
+				history.push('/');
 				localStorage.setItem('jwt', r.token)
 			})
 			.catch((r) => {
 				console.log(r);
 			})
 	}
-
-
-
 
 	function closeAllPopups() {
 		setEditAvatarPopupState(false)
@@ -129,6 +128,7 @@ function App() {
 	const [cards, setCards] = React.useState([]);
 	const [isLoggedIn, setIsloggedIn] = React.useState(false);
 	const [isLoginSuccess, setIsLoginSuccess] = React.useState(false);
+	const history = useHistory();
 	const userEmail = 'krasotun@krasotun.ru';
 
 	React.useEffect(() => {
@@ -168,17 +168,18 @@ function App() {
 						<Login
 							onLogin={handleLogin} />
 					</Route>
-					<Route exact path="/">
-						<Main
-							cards={cards}
-							onCardClick={handleCardClick}
-							onCardLike={handleCardLike}
-							onCardDelete={handleCardDelete}
-							onEditAvatar={handleEditAvatarClick}
-							onEditProfile={handleEditProfileClick}
-							onAddPlace={handleAddPlaceClick}
-						/>
-					</Route>
+					<ProtectedRoute
+						path="/"
+						component={Main}
+						isLoggedIn={isLoggedIn}
+						cards={cards}
+						onCardClick={handleCardClick}
+						onCardLike={handleCardLike}
+						onCardDelete={handleCardDelete}
+						onEditAvatar={handleEditAvatarClick}
+						onEditProfile={handleEditProfileClick}
+						onAddPlace={handleAddPlaceClick}
+					/>
 				</Switch>
 				<Footer />
 				<EditProfilePopup
