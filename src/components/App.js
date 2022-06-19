@@ -16,7 +16,11 @@ import PopupWithForm from "./PopupWithForm";
 import ProtectedRoute from "./ProtectedRoute ";
 import Register from "./Register";
 
+
+
 function App() {
+	const history = useHistory();
+
 	function handleEditAvatarClick() {
 		setEditAvatarPopupState(true)
 	}
@@ -103,15 +107,41 @@ function App() {
 		auth.authorization(password, email)
 			.then((r) => {
 				setIsloggedIn(true);
-				history.push('/');
 				localStorage.setItem('jwt', r.token)
+				history.push('/');
+				handleTokenCheck();
 			})
 			.catch((r) => {
 				console.log(r);
 			})
 	}
 
+	const handleTokenCheck = React.useCallback(
+		() => {
+			const token = localStorage.getItem('jwt');
+			auth.checkTokenValidity(token)
+				.then((r) => {
+					setUserEmail(r.data.email)
+					setIsloggedIn(true);
+					history.push('/')
+				})
+				.catch((r) => {
+					console.log(r);
+				})
+		}, [history]
+	)
+
+	React.useEffect(
+		() => {
+			const token = localStorage.getItem('jwt');
+			if (token) {
+				handleTokenCheck()
+			}
+		}, [handleTokenCheck]
+	)
+
 	function onSignOut() {
+		localStorage.removeItem('jwt');
 		setIsloggedIn(false);
 		history.push("/sign-in");
 	}
@@ -133,8 +163,9 @@ function App() {
 	const [cards, setCards] = React.useState([]);
 	const [isLoggedIn, setIsloggedIn] = React.useState(false);
 	const [isLoginSuccess, setIsLoginSuccess] = React.useState(false);
-	const history = useHistory();
-	const userEmail = 'krasotun@krasotun.ru';
+	const [userEmail, setUserEmail] = React.useState('');
+
+
 
 	React.useEffect(() => {
 		api.getUserInfo()
@@ -153,6 +184,8 @@ function App() {
 				console.log(r);
 			})
 	}, [])
+
+
 
 
 	return (

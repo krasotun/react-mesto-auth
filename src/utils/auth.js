@@ -32,7 +32,7 @@ class Auth {
 	}
 
 	checkTokenValidity(token) {
-		return fetch(`${this._baseUrl}`, {
+		return fetch(`${this._baseUrl}/users/me`, {
 			method: "GET",
 			headers: {
 				...this._headers, Authorization: `Bearer ${token}`
