@@ -105,5 +105,6 @@
 @import "./blocks/form-edit-avatar/__submit-button/form-edit-avatar__submit-button.css";
 
 @import "./blocks/registration/registration.css";
+@import "./blocks/registration/registration_header.css";
 @import "./blocks/registration/__text/registration__text.css";
 @import "./blocks/registration/__link/registration__link.css";

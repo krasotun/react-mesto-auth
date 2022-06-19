@@ -165,8 +165,6 @@ function App() {
 	const [isLoginSuccess, setIsLoginSuccess] = React.useState(false);
 	const [userEmail, setUserEmail] = React.useState('');
 
-
-
 	React.useEffect(() => {
 		api.getUserInfo()
 			.then((data) => {
@@ -185,11 +183,7 @@ function App() {
 			})
 	}, [])
 
-
-
-
 	return (
-
 		<div className="page__content">
 			<CurrentUserContext.Provider value={currentUser}>
 				<Header

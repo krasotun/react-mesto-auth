@@ -6,18 +6,18 @@ function Header({ isLoggedIn, userEmail, onSignOut }) {
 	return (
 		<header className="header">
 			<img className="header__logo" src={logoPath} alt="Логотип" />
-			<div className="header__login-info">
+			<div className="registration registration_header">
 				{isLoggedIn &&
 					<>
-						<p>{userEmail}</p>
-						<p onClick={onSignOut}>Выйти</p>
+						<p className="registration__text">{userEmail}</p>
+						<span className="registration__link" onClick={onSignOut}>Выйти</span>
 					</>
 				}
 				{!isLoggedIn && location.pathname === '/sign-in' &&
-					<Link to="/sign-up" className="registation__link">Регистрация</Link>
+					<Link to="/sign-up" className="registration__link">Регистрация</Link>
 				}
 				{!isLoggedIn && location.pathname === '/sign-up' &&
-					<Link to="/sign-in" className="registation__link">Вoйти</Link>
+					<Link to="/sign-in" className="registration__link">Вoйти</Link>
 				}
 			</div>
 		</header>

@@ -39,7 +39,7 @@ function Register({ onRegistration }) {
 			</Sign>
 			<div className="registration">
 				<p className="registration__text">Уже зарегистрированы?</p>
-				<Link to="/sign-in" className="registation__link">Войти</Link>
+				<Link to="/sign-in" className="registration__link">Войти</Link>
 			</div>
 		</>
 	)
