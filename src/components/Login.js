@@ -3,8 +3,8 @@ import Sign from "./Sign";
 
 function Login({ onLogin }) {
 
-	const [email, setEmail] = React.useState();
-	const [password, setPassword] = React.useState();
+	const [email, setEmail] = React.useState("");
+	const [password, setPassword] = React.useState("");
 
 	function handleEmailChange(event) {
 		setEmail(event.target.value)

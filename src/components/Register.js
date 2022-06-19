@@ -4,8 +4,8 @@ import Sign from "./Sign";
 
 function Register({ onRegistration }) {
 
-	const [email, setEmail] = React.useState();
-	const [password, setPassword] = React.useState();
+	const [email, setEmail] = React.useState("");
+	const [password, setPassword] = React.useState("");
 
 	function handleEmailChange(event) {
 		setEmail(event.target.value);

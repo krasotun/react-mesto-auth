@@ -16,10 +16,18 @@ import PopupWithForm from "./PopupWithForm";
 import ProtectedRoute from "./ProtectedRoute ";
 import Register from "./Register";
 
-
-
 function App() {
 	const history = useHistory();
+	const [isEditProfilePopupOpen, setEditProfilePopupState] = React.useState(false);
+	const [isAddPlacePopupOpen, setAddPlacePopupState] = React.useState(false);
+	const [isEditAvatarPopupOpen, setEditAvatarPopupState] = React.useState(false);
+	const [isInfoTooltipPopupOpen, setInfoTooltipPopupState] = React.useState(false);
+	const [selectedCard, setSelectedCard] = React.useState(false);
+	const [currentUser, setCurrentUser] = React.useState({ name: "", description: "", avatar: '' });
+	const [cards, setCards] = React.useState([]);
+	const [isLoggedIn, setIsloggedIn] = React.useState(false);
+	const [isLoginSuccess, setIsLoginSuccess] = React.useState(false);
+	const [userEmail, setUserEmail] = React.useState('');
 
 	function handleEditAvatarClick() {
 		setEditAvatarPopupState(true)
@@ -89,7 +97,6 @@ function App() {
 			})
 	}
 
-
 	function handleRegistation(password, email) {
 		auth.registration(password, email)
 			.then(() => {
@@ -112,6 +119,8 @@ function App() {
 				handleTokenCheck();
 			})
 			.catch((r) => {
+				setIsLoginSuccess(false);
+				setInfoTooltipPopupState(true);
 				console.log(r);
 			})
 	}
@@ -154,34 +163,22 @@ function App() {
 		setSelectedCard({ name: '', link: '' })
 	}
 
-	const [isEditProfilePopupOpen, setEditProfilePopupState] = React.useState(false);
-	const [isAddPlacePopupOpen, setAddPlacePopupState] = React.useState(false);
-	const [isEditAvatarPopupOpen, setEditAvatarPopupState] = React.useState(false);
-	const [isInfoTooltipPopupOpen, setInfoTooltipPopupState] = React.useState(false);
-	const [selectedCard, setSelectedCard] = React.useState(false);
-	const [currentUser, setCurrentUser] = React.useState({ name: "", description: "", avatar: '' });
-	const [cards, setCards] = React.useState([]);
-	const [isLoggedIn, setIsloggedIn] = React.useState(false);
-	const [isLoginSuccess, setIsLoginSuccess] = React.useState(false);
-	const [userEmail, setUserEmail] = React.useState('');
-
 	React.useEffect(() => {
-		api.getUserInfo()
-			.then((data) => {
-				setCurrentUser(data);
-			}).catch((r) => {
-				console.log(r);
-			})
-	}, [])
-
-	React.useEffect(() => {
-		api.getInitialCards()
-			.then((data) => {
-				setCards(data)
-			}).catch((r) => {
-				console.log(r);
-			})
-	}, [])
+		if (isLoggedIn) {
+			api.getUserInfo()
+				.then((data) => {
+					setCurrentUser(data);
+				}).catch((r) => {
+					console.log(r);
+				})
+			api.getInitialCards()
+				.then((data) => {
+					setCards(data)
+				}).catch((r) => {
+					console.log(r);
+				})
+		}
+	}, [isLoggedIn])
 
 	return (
 		<div className="page__content">
@@ -192,17 +189,16 @@ function App() {
 					onSignOut={onSignOut}
 				/>
 				<Switch>
-					<Route exact path="/sign-up">
+					<Route path="/sign-up">
 						<Register
 							onRegistration={handleRegistation}
 						/>
 					</Route>
-					<Route exact path="/sign-in">
+					<Route path="/sign-in">
 						<Login
 							onLogin={handleLogin} />
 					</Route>
-					<ProtectedRoute
-						path="/"
+					<ProtectedRoute exact path="/"
 						component={Main}
 						isLoggedIn={isLoggedIn}
 						cards={cards}
