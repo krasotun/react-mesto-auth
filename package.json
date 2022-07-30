@@ -1,5 +1,6 @@
 {
   "name": "mesto-react",
+  "homepage": "https://krasotun.github.io/react-mesto-auth/",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
@@ -18,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm build && scp -r ./build/* krasotun@84.201.136.194:/home/krasotun/mesto-frontend"
   },
   "eslintConfig": {
     "extends": [
